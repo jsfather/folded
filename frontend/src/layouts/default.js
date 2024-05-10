@@ -1,9 +1,10 @@
 import React from 'react';
+import Appbar from '../components/Appbar';
 
-const Layout = ({children}) => {
+const Layout = ({children, title}) => {
     return (
         <>
-            <div>test</div>
+            <Appbar title={title}/>
             <main>{children}</main>
         </>
     )
