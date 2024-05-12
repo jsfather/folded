@@ -15,7 +15,7 @@ app.use((req, res, next) => {
     next()
 })
 app.use(express.json());
-app.use('/api/costs', costsRoutes);
+app.use('/costs', costsRoutes);
 
 mongoose.connect(mongo_uri , {dbName: mongo_db_name})
     .then(() => {
