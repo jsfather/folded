@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const mongo_db_name = process.env.MONGO_DB_NAME;
 
 const costsRoutes = require('./routes/costs');
 
+app.use(cors());
 app.use((req, res, next) => {
     console.log(req.path, req.method);
     next()
