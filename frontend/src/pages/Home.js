@@ -1,9 +1,29 @@
+import * as React from 'react';
 import Layout from "../layouts/default";
 import {useEffect, useState} from "react";
 import CostDetails from "../components/CostDetails";
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 
 const Home = () => {
     const [costs, setCosts] = useState(null);
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
 
     useEffect(() => {
         const fetchCosts = async () => {
@@ -23,9 +43,14 @@ const Home = () => {
         <Layout title="Home">
             <div className="home">
                 {costs && costs.map((cost) => (
-                    <CostDetails key={cost._id} cost={cost} style={'backgroundColor: red'} />
+                    <CostDetails key={cost._id} cost={cost}/>
                 ))}
             </div>
+
+            <Fab sx={{position: "fixed", bottom: '16px', right: "16px"}} color="primary" aria-label="add"
+                 onClick={handleClickOpen}>
+                <AddIcon/>
+            </Fab>
         </Layout>
     )
 }
