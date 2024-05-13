@@ -20,7 +20,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchCosts = async () => {
-            const response = await fetch("http://api.folded.ir/costs");
+            const response = await fetch("https://api.folded.ir/costs");
             const json = await response.json();
             console.log(response);
 
