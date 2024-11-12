@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc5dda4-56bd-44e2-b829-2c3a452043fe" name="Changes" comment="Button component added">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="1cc5dda4-56bd-44e2-b829-2c3a452043fe" name="Changes" comment="idk why this is in my code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,6 +58,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
+    "npm.format.executor": "Run",
     "prettier.import.notification.dismissed": "true",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\keyva\\Projects\\folded\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
@@ -72,7 +66,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.format">
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -116,7 +110,7 @@
       <workItem from="1731431800016" duration="1260000" />
       <workItem from="1731433090698" duration="258000" />
       <workItem from="1731433366195" duration="175000" />
-      <workItem from="1731433565861" duration="173000" />
+      <workItem from="1731433565861" duration="518000" />
     </task>
     <task id="LOCAL-00001" summary="idea added">
       <option name="closed" value="true" />
@@ -150,7 +144,47 @@
       <option name="project" value="LOCAL" />
       <updated>1731432630056</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="prettier support added">
+      <option name="closed" value="true" />
+      <created>1731433900124</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731433900124</updated>
+    </task>
+    <task id="LOCAL-00006" summary=".prettierrc and tailwindcss support added">
+      <option name="closed" value="true" />
+      <created>1731433930069</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731433930069</updated>
+    </task>
+    <task id="LOCAL-00007" summary="prettier and tailwind support with eslint added">
+      <option name="closed" value="true" />
+      <created>1731434003299</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731434003299</updated>
+    </task>
+    <task id="LOCAL-00008" summary="formatted by prettier">
+      <option name="closed" value="true" />
+      <created>1731434053564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731434053564</updated>
+    </task>
+    <task id="LOCAL-00009" summary="idk why this is in my code">
+      <option name="closed" value="true" />
+      <created>1731434077274</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731434077274</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +206,11 @@
     <MESSAGE value="Button.tsx added" />
     <MESSAGE value="index.ts added" />
     <MESSAGE value="Button component added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Button component added" />
+    <MESSAGE value="prettier support added" />
+    <MESSAGE value=".prettierrc and tailwindcss support added" />
+    <MESSAGE value="prettier and tailwind support with eslint added" />
+    <MESSAGE value="formatted by prettier" />
+    <MESSAGE value="idk why this is in my code" />
+    <option name="LAST_COMMIT_MESSAGE" value="idk why this is in my code" />
   </component>
 </project>
