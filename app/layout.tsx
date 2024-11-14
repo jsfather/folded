@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header, Footer } from '@/components';
+import { Header, Navbar } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Folded',
@@ -18,7 +18,7 @@ export default function RootLayout({
         <main className="w-full bg-slate-800 sm:w-full md:w-full lg:w-2/3 xl:w-1/2">
           <Header />
           <div>{children}</div>
-          <Footer />
+          <Navbar />
         </main>
       </body>
     </html>
