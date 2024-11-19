@@ -1,6 +1,6 @@
 'use client';
 
-import { HiUser, HiCalendar, HiViewGrid, HiTerminal } from 'react-icons/hi';
+import { HiUser, HiCalendar, HiViewGrid, HiCash } from 'react-icons/hi';
 import { HiWallet } from 'react-icons/hi2';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,7 +12,7 @@ function Navbar() {
     { href: '/profile', icon: HiUser },
     { href: '/wallet', icon: HiWallet },
     { href: '/schedule', icon: HiCalendar },
-    { href: '/terminal', icon: HiTerminal },
+    { href: '/transactions', icon: HiCash },
     { href: '/dashboard', icon: HiViewGrid },
   ];
 
