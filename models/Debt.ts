@@ -5,6 +5,7 @@ const debtSchema = new mongoose.Schema(
     name: String,
     amount: Number,
     description: String,
+    receiver: String,
   },
   { timestamps: true }
 );
