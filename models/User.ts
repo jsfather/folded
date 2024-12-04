@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Debt from '@/models/Debt';
 
 const userSchema = new mongoose.Schema(
   {
@@ -6,6 +7,7 @@ const userSchema = new mongoose.Schema(
     last_name: String,
     email: String,
     phone_number: String,
+    debts: [Debt],
   },
   { timestamps: true }
 );
