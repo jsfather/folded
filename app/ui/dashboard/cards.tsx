@@ -26,11 +26,7 @@ export default async function CardWrapper() {
       <Card title="خرج های گذشته" value={totalPaidInvoices} type="collected" />
       <Card title="خرج های آینده" value={totalPendingInvoices} type="pending" />
       <Card title="تمام مخارج" value={numberOfInvoices} type="invoices" />
-      <Card
-        title="همه مشتریان"
-        value={numberOfCustomers}
-        type="customers"
-      />
+      <Card title="همه مشتریان" value={numberOfCustomers} type="customers" />
     </>
   );
 }
@@ -52,9 +48,7 @@ export function Card({
         {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
         <h3 className="mr-2 text-sm font-medium">{title}</h3>
       </div>
-      <p
-        className="truncate rounded-xl bg-white px-4 py-8 text-center text-2xl"
-      >
+      <p className="truncate rounded-xl bg-white px-4 py-8 text-center text-2xl">
         {value}
       </p>
     </div>
