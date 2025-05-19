@@ -7,6 +7,12 @@ const users = [
     email: 'bahareh.safahani.1993@gmail.com',
     password: '09361185027',
   },
+  {
+    id: '410544b2-4001-4271-9855-fec4b6a6442a',
+    name: 'Keyvan',
+    email: 'keyvanmatinrad@outlook.com',
+    password: '09129796346',
+  },
 ];
 
 const customers = [
