@@ -1,37 +1,41 @@
-import '@/app/ui/global.css';
-import { Metadata } from 'next';
-import localFont from 'next/font/local';
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import "./globals.css";
+
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | فولدِد',
-    default: 'فولدِد',
-  },
-  description:
-    'فولدِد به شما کمک می‌کند بدهی‌ها و پرداخت‌هایتان را مدیریت کنید — منظم بمانید و هیچ پرداختی را فراموش نکنید.',
+  metadataBase: new URL(defaultUrl),
+  title: "Next.js and Supabase Starter Kit",
+  description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-const iranSansXFaNum = localFont({
-  src: [
-    {
-      path: './fonts/IRANSansXFaNum-Regular.ttf',
-      weight: '400',
-    },
-    {
-      path: './fonts/IRANSansXFaNum-Bold.ttf',
-      weight: '700',
-    },
-  ],
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  display: "swap",
+  subsets: ["latin"],
 });
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="fa" dir="rtl" className={iranSansXFaNum.className}>
-      <body className="antialiased">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
