@@ -1,11 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Transaction } from '@/lib/types/transaction';
-import { formatCurrency, formatDate, deleteTransaction } from '@/lib/services/transactions';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Trash2, Edit } from 'lucide-react';
+import { useState } from "react";
+import { Transaction } from "@/lib/types/transaction";
+import {
+  formatCurrency,
+  formatDate,
+  deleteTransaction,
+} from "@/lib/services/transactions";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Trash2, Edit } from "lucide-react";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -13,18 +17,22 @@ interface TransactionListProps {
   onDelete: () => void;
 }
 
-export function TransactionList({ transactions, onEdit, onDelete }: TransactionListProps) {
+export function TransactionList({
+  transactions,
+  onEdit,
+  onDelete,
+}: TransactionListProps) {
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const handleDelete = async (id: string) => {
-    if (confirm('Are you sure you want to delete this transaction?')) {
+    if (confirm("Are you sure you want to delete this transaction?")) {
       setDeletingId(id);
       try {
         await deleteTransaction(id);
         onDelete();
       } catch (error) {
-        console.error('Failed to delete transaction:', error);
-        alert('Failed to delete transaction');
+        console.error("Failed to delete transaction:", error);
+        alert("Failed to delete transaction");
       } finally {
         setDeletingId(null);
       }
@@ -42,28 +50,42 @@ export function TransactionList({ transactions, onEdit, onDelete }: TransactionL
   return (
     <div className="space-y-3">
       {transactions.map((transaction) => (
-        <Card key={transaction.id} className="hover:shadow-md transition-shadow">
+        <Card
+          key={transaction.id}
+          className="hover:shadow-md transition-shadow"
+        >
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3">
-                  <div className={`w-3 h-3 rounded-full ${
-                    transaction.type === 'income' ? 'bg-green-500' : 'bg-red-500'
-                  }`} />
+                  <div
+                    className={`w-3 h-3 rounded-full ${
+                      transaction.type === "income"
+                        ? "bg-green-500"
+                        : "bg-red-500"
+                    }`}
+                  />
                   <div>
                     <h3 className="font-medium">{transaction.description}</h3>
-                    <p className="text-sm text-gray-500">{formatDate(transaction.date)}</p>
+                    <p className="text-sm text-gray-500">
+                      {formatDate(transaction.date)}
+                    </p>
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3">
-                <span className={`font-semibold ${
-                  transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
-                }`}>
-                  {transaction.type === 'income' ? '+' : '-'}{formatCurrency(transaction.amount)}
+                <span
+                  className={`font-semibold ${
+                    transaction.type === "income"
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  {transaction.type === "income" ? "+" : "-"}
+                  {formatCurrency(transaction.amount)}
                 </span>
-                
+
                 <div className="flex gap-1">
                   <Button
                     variant="ghost"

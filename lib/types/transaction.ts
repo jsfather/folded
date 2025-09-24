@@ -1,7 +1,7 @@
 export interface Transaction {
   id: string;
   user_id: string;
-  type: 'income' | 'expense';
+  type: "income" | "expense";
   amount: number;
   description: string;
   date: string; // ISO date string
@@ -10,7 +10,7 @@ export interface Transaction {
 }
 
 export interface CreateTransactionData {
-  type: 'income' | 'expense';
+  type: "income" | "expense";
   amount: number;
   description: string;
   date: string; // ISO date string

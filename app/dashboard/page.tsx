@@ -1,27 +1,29 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Transaction, MonthlyStats } from '@/lib/types/transaction';
-import { getTransactions, getMonthlyStats } from '@/lib/services/transactions';
-import { TransactionForm } from '@/components/transaction-form';
-import { TransactionList } from '@/components/transaction-list';
-import { MonthlyStatsComponent } from '@/components/monthly-stats';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, Calendar, BarChart3 } from 'lucide-react';
-import { ClientAuthButton } from '@/components/client-auth-button';
-import { ThemeSwitcher } from '@/components/theme-switcher';
+import { useState, useEffect } from "react";
+import { Transaction, MonthlyStats } from "@/lib/types/transaction";
+import { getTransactions, getMonthlyStats } from "@/lib/services/transactions";
+import { TransactionForm } from "@/components/transaction-form";
+import { TransactionList } from "@/components/transaction-list";
+import { MonthlyStatsComponent } from "@/components/monthly-stats";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Plus, Calendar, BarChart3 } from "lucide-react";
+import { ClientAuthButton } from "@/components/client-auth-button";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
-type View = 'transactions' | 'stats' | 'add' | 'edit';
+type View = "transactions" | "stats" | "add" | "edit";
 
 export default function Dashboard() {
-  const [view, setView] = useState<View>('transactions');
+  const [view, setView] = useState<View>("transactions");
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [monthlyStats, setMonthlyStats] = useState<MonthlyStats[]>([]);
   const [selectedMonth, setSelectedMonth] = useState<string>(() => {
     return new Date().toISOString().substring(0, 7); // YYYY-MM
   });
-  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | undefined>();
+  const [selectedTransaction, setSelectedTransaction] = useState<
+    Transaction | undefined
+  >();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,16 +31,16 @@ export default function Dashboard() {
     try {
       setIsLoading(true);
       setError(null);
-      
+
       const [transactionsData, statsData] = await Promise.all([
         getTransactions(selectedMonth),
-        getMonthlyStats(new Date().getFullYear())
+        getMonthlyStats(new Date().getFullYear()),
       ]);
-      
+
       setTransactions(transactionsData);
       setMonthlyStats(statsData);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load data');
+      setError(err instanceof Error ? err.message : "Failed to load data");
     } finally {
       setIsLoading(false);
     }
@@ -49,18 +51,18 @@ export default function Dashboard() {
   }, [selectedMonth]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleFormSuccess = () => {
-    setView('transactions');
+    setView("transactions");
     setSelectedTransaction(undefined);
     loadData();
   };
 
   const handleEdit = (transaction: Transaction) => {
     setSelectedTransaction(transaction);
-    setView('edit');
+    setView("edit");
   };
 
   const handleCancel = () => {
-    setView('transactions');
+    setView("transactions");
     setSelectedTransaction(undefined);
   };
 
@@ -109,24 +111,24 @@ export default function Dashboard() {
         {/* Navigation */}
         <div className="flex flex-wrap gap-2 mb-6">
           <Button
-            variant={view === 'transactions' ? 'default' : 'outline'}
-            onClick={() => setView('transactions')}
+            variant={view === "transactions" ? "default" : "outline"}
+            onClick={() => setView("transactions")}
             className="flex items-center gap-2"
           >
             <Calendar className="h-4 w-4" />
             Transactions
           </Button>
           <Button
-            variant={view === 'stats' ? 'default' : 'outline'}
-            onClick={() => setView('stats')}
+            variant={view === "stats" ? "default" : "outline"}
+            onClick={() => setView("stats")}
             className="flex items-center gap-2"
           >
             <BarChart3 className="h-4 w-4" />
             Statistics
           </Button>
           <Button
-            variant={view === 'add' ? 'default' : 'outline'}
-            onClick={() => setView('add')}
+            variant={view === "add" ? "default" : "outline"}
+            onClick={() => setView("add")}
             className="flex items-center gap-2"
           >
             <Plus className="h-4 w-4" />
@@ -135,7 +137,7 @@ export default function Dashboard() {
         </div>
 
         {/* Content */}
-        {view === 'transactions' && (
+        {view === "transactions" && (
           <div className="space-y-6">
             {/* Month Selector */}
             <Card>
@@ -161,11 +163,14 @@ export default function Dashboard() {
           </div>
         )}
 
-        {view === 'stats' && (
-          <MonthlyStatsComponent stats={monthlyStats} currentMonth={selectedMonth} />
+        {view === "stats" && (
+          <MonthlyStatsComponent
+            stats={monthlyStats}
+            currentMonth={selectedMonth}
+          />
         )}
 
-        {(view === 'add' || view === 'edit') && (
+        {(view === "add" || view === "edit") && (
           <TransactionForm
             transaction={selectedTransaction}
             onSuccess={handleFormSuccess}

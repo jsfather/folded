@@ -1,4 +1,3 @@
-
 import { EnvVarWarning } from "@/components/env-var-warning";
 import { AuthButton } from "@/components/auth-button";
 import { Hero } from "@/components/hero";
@@ -12,10 +11,12 @@ import Link from "next/link";
 
 export default async function Home() {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (user) {
-    redirect('/dashboard');
+    redirect("/dashboard");
   }
   return (
     <main className="min-h-screen flex flex-col items-center">

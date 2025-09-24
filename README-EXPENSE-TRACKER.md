@@ -23,24 +23,27 @@ A beautiful, progressive web app for managing your personal finances built with 
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Supabase account
 
 ### Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd folded
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up Supabase**
+
    - Create a new project at [supabase.com](https://supabase.com)
    - Copy your project URL and anon key
    - Create a `.env.local` file:
@@ -50,11 +53,13 @@ A beautiful, progressive web app for managing your personal finances built with 
      ```
 
 4. **Set up the database**
+
    - Go to your Supabase project dashboard
    - Navigate to the SQL Editor
    - Run the SQL from `supabase/schema.sql` to create the transactions table
 
 5. **Run the development server**
+
    ```bash
    npm run dev
    ```

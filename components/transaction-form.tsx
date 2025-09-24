@@ -1,12 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { createTransaction, updateTransaction } from '@/lib/services/transactions';
-import { Transaction, CreateTransactionData } from '@/lib/types/transaction';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  createTransaction,
+  updateTransaction,
+} from "@/lib/services/transactions";
+import { Transaction, CreateTransactionData } from "@/lib/types/transaction";
 
 interface TransactionFormProps {
   transaction?: Transaction;
@@ -14,12 +17,16 @@ interface TransactionFormProps {
   onCancel: () => void;
 }
 
-export function TransactionForm({ transaction, onSuccess, onCancel }: TransactionFormProps) {
+export function TransactionForm({
+  transaction,
+  onSuccess,
+  onCancel,
+}: TransactionFormProps) {
   const [formData, setFormData] = useState<CreateTransactionData>({
-    type: transaction?.type || 'expense',
+    type: transaction?.type || "expense",
     amount: transaction?.amount || 0,
-    description: transaction?.description || '',
-    date: transaction?.date || new Date().toISOString().split('T')[0],
+    description: transaction?.description || "",
+    date: transaction?.date || new Date().toISOString().split("T")[0],
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +44,7 @@ export function TransactionForm({ transaction, onSuccess, onCancel }: Transactio
       }
       onSuccess();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -47,7 +54,7 @@ export function TransactionForm({ transaction, onSuccess, onCancel }: Transactio
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
         <CardTitle>
-          {transaction ? 'Edit Transaction' : 'Add Transaction'}
+          {transaction ? "Edit Transaction" : "Add Transaction"}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -57,7 +64,12 @@ export function TransactionForm({ transaction, onSuccess, onCancel }: Transactio
             <select
               id="type"
               value={formData.type}
-              onChange={(e) => setFormData({ ...formData, type: e.target.value as 'income' | 'expense' })}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  type: e.target.value as "income" | "expense",
+                })
+              }
               className="w-full p-2 border border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-800"
               required
             >
@@ -74,7 +86,12 @@ export function TransactionForm({ transaction, onSuccess, onCancel }: Transactio
               step="0.01"
               min="0.01"
               value={formData.amount}
-              onChange={(e) => setFormData({ ...formData, amount: parseFloat(e.target.value) || 0 })}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  amount: parseFloat(e.target.value) || 0,
+                })
+              }
               required
             />
           </div>
@@ -85,7 +102,9 @@ export function TransactionForm({ transaction, onSuccess, onCancel }: Transactio
               id="description"
               type="text"
               value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
               required
             />
           </div>
@@ -96,20 +115,25 @@ export function TransactionForm({ transaction, onSuccess, onCancel }: Transactio
               id="date"
               type="date"
               value={formData.date}
-              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, date: e.target.value })
+              }
               required
             />
           </div>
 
-          {error && (
-            <div className="text-red-600 text-sm">{error}</div>
-          )}
+          {error && <div className="text-red-600 text-sm">{error}</div>}
 
           <div className="flex gap-2">
             <Button type="submit" disabled={isLoading} className="flex-1">
-              {isLoading ? 'Saving...' : (transaction ? 'Update' : 'Add')}
+              {isLoading ? "Saving..." : transaction ? "Update" : "Add"}
             </Button>
-            <Button type="button" variant="outline" onClick={onCancel} disabled={isLoading}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onCancel}
+              disabled={isLoading}
+            >
               Cancel
             </Button>
           </div>
