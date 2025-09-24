@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { createClient } from "@/lib/supabase/client";
@@ -42,7 +42,7 @@ export function Header({ onAddTransaction }: HeaderProps) {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-primary">Folded</h1>
-          
+
           <div className="flex items-center gap-4">
             {/* Add Transaction Button - only show when user is logged in */}
             {user && onAddTransaction && (
@@ -55,9 +55,9 @@ export function Header({ onAddTransaction }: HeaderProps) {
                 Add
               </Button>
             )}
-            
+
             <ThemeSwitcher />
-            
+
             {loading ? (
               <div className="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
             ) : user ? (
