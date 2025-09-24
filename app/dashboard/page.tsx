@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, BarChart3 } from "lucide-react";
 import { Header } from "@/components/header";
+import { translations } from "@/lib/translations";
 
 type View = "transactions" | "stats" | "add" | "edit";
 
@@ -70,7 +71,7 @@ export default function Dashboard() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p>Loading your expense tracker...</p>
+          <p>{translations.loadingExpenseTracker}</p>
         </div>
       </div>
     );
@@ -83,7 +84,7 @@ export default function Dashboard() {
           <CardContent className="pt-6">
             <div className="text-center text-red-600 mb-4">{error}</div>
             <Button onClick={loadData} className="w-full">
-              Try Again
+              {translations.tryAgain}
             </Button>
           </CardContent>
         </Card>
@@ -110,7 +111,7 @@ export default function Dashboard() {
             className="flex items-center gap-2"
           >
             <Calendar className="h-4 w-4" />
-            Transactions
+            {translations.transactions}
           </Button>
           <Button
             variant={view === "stats" ? "default" : "outline"}
@@ -118,7 +119,7 @@ export default function Dashboard() {
             className="flex items-center gap-2"
           >
             <BarChart3 className="h-4 w-4" />
-            Statistics
+            {translations.statistics}
           </Button>
         </div>
 
@@ -129,7 +130,7 @@ export default function Dashboard() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  <span>Transactions</span>
+                  <span>{translations.transactions}</span>
                   <input
                     type="month"
                     value={selectedMonth}

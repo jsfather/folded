@@ -10,6 +10,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Trash2, Edit } from "lucide-react";
+import { translations } from "@/lib/translations";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -25,14 +26,14 @@ export function TransactionList({
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this transaction?")) {
+    if (confirm(translations.deleteConfirm)) {
       setDeletingId(id);
       try {
         await deleteTransaction(id);
         onDelete();
       } catch (error) {
         console.error("Failed to delete transaction:", error);
-        alert("Failed to delete transaction");
+        alert("خطا در حذف تراکنش");
       } finally {
         setDeletingId(null);
       }
@@ -42,7 +43,7 @@ export function TransactionList({
   if (transactions.length === 0) {
     return (
       <div className="text-center py-8 text-gray-500">
-        No transactions found. Add your first transaction to get started!
+        {translations.noTransactions}
       </div>
     );
   }
