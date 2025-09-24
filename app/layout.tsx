@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { iranyekanx, iranyekanxFaNum } from "./fonts";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -9,8 +10,18 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "فولدد - مدیریت مخارج",
-  description: "برنامه وب پیشرفته برای مدیریت مخارج شخصی با Next.js و Supabase",
+  title: "فولدد - مدیریت مخارج شخصی",
+  description:
+    "با برنامه فولدد به راحتی درآمد و مخارج خود را مدیریت کنید. ابزاری قدرتمند برای پیگیری تراکنش‌های مالی، مشاهده آمار ماهانه و کنترل بهتر بودجه شخصی.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "فولدد",
+  },
+  icons: {
+    apple: "/icon-192x192.png",
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +48,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ServiceWorkerRegister />
         </ThemeProvider>
       </body>
     </html>
