@@ -5,6 +5,9 @@ import {
   UpdateTransactionData,
   MonthlyStats,
 } from "@/lib/types/transaction";
+import DateObject from "react-date-object";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 
 export async function getTransactions(month?: string): Promise<Transaction[]> {
   const supabase = createClient();
@@ -151,9 +154,15 @@ export function formatCurrency(amount: number): string {
 }
 
 export function formatDate(date: string): string {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  // Convert Gregorian date to Jalali for display
+  try {
+    const jalaliDate = new DateObject(new Date(date)).convert(
+      persian,
+      persian_fa
+    );
+    return jalaliDate.format("DD MMMM YYYY");
+  } catch {
+    // Fallback to original format if conversion fails
+    return new Date(date).toLocaleDateString("fa-IR");
+  }
 }

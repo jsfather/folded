@@ -1,13 +1,11 @@
 {
-  "name": "Folded - Expense Tracker",
-  "short_name": "Folded",
-  "description": "A personal expense tracking PWA",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "orientation": "portrait",
-  "scope": "/",
+  "name": "فولدد - مدیریت مخارج",
+  "short_name": "فولدد",
+  "description": "برنامه وب پیشرفته برای مدیریت مخارج شخصی",
   "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
   "icons": [
     {
       "src": "/icon-192x192.png",

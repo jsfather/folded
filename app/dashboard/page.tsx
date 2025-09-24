@@ -6,6 +6,7 @@ import { getTransactions, getMonthlyStats } from "@/lib/services/transactions";
 import { TransactionForm } from "@/components/transaction-form";
 import { TransactionList } from "@/components/transaction-list";
 import { MonthlyStatsComponent } from "@/components/monthly-stats";
+import { JalaliMonthPicker } from "@/components/jalali-month-picker";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, BarChart3 } from "lucide-react";
@@ -131,11 +132,9 @@ export default function Dashboard() {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <span>{translations.transactions}</span>
-                  <input
-                    type="month"
-                    value={selectedMonth}
-                    onChange={(e) => setSelectedMonth(e.target.value)}
-                    className="px-3 py-1 border rounded-md bg-background"
+                  <JalaliMonthPicker
+                    selectedMonth={selectedMonth}
+                    onMonthChange={setSelectedMonth}
                   />
                 </CardTitle>
               </CardHeader>
