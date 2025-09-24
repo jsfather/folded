@@ -48,7 +48,18 @@ export async function updateSession(request: NextRequest) {
   const user = data?.claims;
 
   if (
+    request.nextUrl.pathname.startsWith("/dashboard") &&
+    !user
+  ) {
+    // User is not authenticated, redirect to login
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/login";
+    return NextResponse.redirect(url);
+  }
+
+  if (
     request.nextUrl.pathname !== "/" &&
+    request.nextUrl.pathname !== "/dashboard" &&
     !user &&
     !request.nextUrl.pathname.startsWith("/login") &&
     !request.nextUrl.pathname.startsWith("/auth")
