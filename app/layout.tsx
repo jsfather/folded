@@ -1,37 +1,60 @@
-import '@/app/ui/global.css';
-import { Metadata } from 'next';
-import localFont from 'next/font/local';
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import "./globals.css";
+
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | فولدِد',
-    default: 'فولدِد',
-  },
+  metadataBase: new URL(defaultUrl),
+  title: "Folded - Expense Tracker",
   description:
-    'فولدِد به شما کمک می‌کند بدهی‌ها و پرداخت‌هایتان را مدیریت کنید — منظم بمانید و هیچ پرداختی را فراموش نکنید.',
+    "A personal expense tracking PWA built with Next.js and Supabase",
+  manifest: "/manifest.json",
+  themeColor: "#000000",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Folded",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
-const iranSansXFaNum = localFont({
-  src: [
-    {
-      path: './fonts/IRANSansXFaNum-Regular.ttf',
-      weight: '400',
-    },
-    {
-      path: './fonts/IRANSansXFaNum-Bold.ttf',
-      weight: '700',
-    },
-  ],
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  display: "swap",
+  subsets: ["latin"],
 });
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="fa" dir="rtl" className={iranSansXFaNum.className}>
-      <body className="antialiased">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+      </head>
+      <body className={`${geistSans.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
