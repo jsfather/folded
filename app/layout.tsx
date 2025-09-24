@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { iranyekanx, iranyekanxFaNum } from "./fonts";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
@@ -24,12 +24,6 @@ export const metadata: Metadata = {
   },
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,7 +39,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
-      <body className={`${geistSans.className} antialiased`}>
+      <body
+        className={`${iranyekanxFaNum.variable} ${iranyekanx.variable} font-iranyekanx-fanum antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

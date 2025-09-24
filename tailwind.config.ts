@@ -57,6 +57,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        'iranyekanx': ['var(--font-iranyekanx)', 'sans-serif'],
+        'iranyekanx-fanum': ['var(--font-iranyekanx-fanum)', 'sans-serif'],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
