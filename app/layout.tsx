@@ -11,16 +11,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: "فولدد - مدیریت مخارج",
   description: "برنامه وب پیشرفته برای مدیریت مخارج شخصی با Next.js و Supabase",
-  manifest: "/manifest.json",
-  themeColor: "#000000",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "فولدد",
-  },
-  formatDetection: {
-    telephone: false,
-  },
 };
 
 export default function RootLayout({
@@ -36,7 +26,6 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
       <body
         className={`${iranyekanxFaNum.variable} ${iranyekanx.variable} font-iranyekanx-fanum antialiased`}

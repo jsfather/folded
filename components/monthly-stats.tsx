@@ -4,6 +4,7 @@ import { MonthlyStats } from "@/lib/types/transaction";
 import { formatCurrency } from "@/lib/services/transactions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, DollarSign } from "lucide-react";
+import { translations } from "@/lib/translations";
 
 interface MonthlyStatsProps {
   stats: MonthlyStats[];
@@ -35,7 +36,7 @@ export function MonthlyStatsComponent({
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Income This Month
+                {translations.incomeThisMonth}
               </CardTitle>
               <TrendingUp className="h-4 w-4 text-green-600" />
             </CardHeader>
@@ -49,7 +50,7 @@ export function MonthlyStatsComponent({
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Expenses This Month
+                {translations.expensesThisMonth}
               </CardTitle>
               <TrendingDown className="h-4 w-4 text-red-600" />
             </CardHeader>
@@ -63,7 +64,7 @@ export function MonthlyStatsComponent({
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Net This Month
+                {translations.netThisMonth}
               </CardTitle>
               <DollarSign className="h-4 w-4" />
             </CardHeader>
@@ -86,7 +87,9 @@ export function MonthlyStatsComponent({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Total Income</CardTitle>
+            <CardTitle className="text-lg">
+              {translations.totalIncome}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-green-600">
@@ -97,7 +100,9 @@ export function MonthlyStatsComponent({
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Total Expenses</CardTitle>
+            <CardTitle className="text-lg">
+              {translations.totalExpenses}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-red-600">
@@ -108,7 +113,7 @@ export function MonthlyStatsComponent({
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Net Total</CardTitle>
+            <CardTitle className="text-lg">{translations.netAmount}</CardTitle>
           </CardHeader>
           <CardContent>
             <div
@@ -126,7 +131,7 @@ export function MonthlyStatsComponent({
       {stats.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle>Monthly Breakdown</CardTitle>
+            <CardTitle>{translations.monthlyBreakdown}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -140,22 +145,23 @@ export function MonthlyStatsComponent({
                       {formatMonthName(stat.month)}
                     </h3>
                     <p className="text-sm text-gray-500">
-                      {stat.transactionCount} transactions
+                      {stat.transactionCount} {translations.transactionsCount}
                     </p>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left">
                     <div className="text-sm text-green-600">
-                      Income: {formatCurrency(stat.totalIncome)}
+                      {translations.income}: {formatCurrency(stat.totalIncome)}
                     </div>
                     <div className="text-sm text-red-600">
-                      Expenses: {formatCurrency(stat.totalExpenses)}
+                      {translations.expense}:{" "}
+                      {formatCurrency(stat.totalExpenses)}
                     </div>
                     <div
                       className={`font-medium ${
                         stat.netAmount >= 0 ? "text-green-600" : "text-red-600"
                       }`}
                     >
-                      Net: {formatCurrency(stat.netAmount)}
+                      {translations.netAmount}: {formatCurrency(stat.netAmount)}
                     </div>
                   </div>
                 </div>
