@@ -67,6 +67,12 @@ export const translations = {
   dark: "تیره",
   system: "سیستم",
 
+  // Date and Time
+  useCurrentTime: "استفاده از زمان فعلی",
+  selectDate: "تاریخ را انتخاب کنید",
+  selectMonth: "انتخاب ماه",
+  currentTime: "زمان فعلی",
+
   // Form validation
   required: "این فیلد الزامی است",
   invalidEmail: "ایمیل نامعتبر است",

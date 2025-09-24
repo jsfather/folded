@@ -5,6 +5,9 @@ import { formatCurrency } from "@/lib/services/transactions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, DollarSign } from "lucide-react";
 import { translations } from "@/lib/translations";
+import DateObject from "react-date-object";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 
 interface MonthlyStatsProps {
   stats: MonthlyStats[];
@@ -24,8 +27,18 @@ export function MonthlyStatsComponent({
   const netTotal = totalIncome - totalExpenses;
 
   const formatMonthName = (monthStr: string) => {
-    const date = new Date(monthStr + "-01");
-    return date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
+    try {
+      const date = new Date(monthStr + "-01");
+      const jalaliDate = new DateObject(date).convert(persian, persian_fa);
+      return jalaliDate.format("MMMM YYYY");
+    } catch {
+      // Fallback to original format if conversion fails
+      const date = new Date(monthStr + "-01");
+      return date.toLocaleDateString("fa-IR", {
+        year: "numeric",
+        month: "long",
+      });
+    }
   };
 
   return (
