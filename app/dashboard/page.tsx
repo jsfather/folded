@@ -8,9 +8,8 @@ import { TransactionList } from "@/components/transaction-list";
 import { MonthlyStatsComponent } from "@/components/monthly-stats";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus, Calendar, BarChart3 } from "lucide-react";
-import { ClientAuthButton } from "@/components/client-auth-button";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { Calendar, BarChart3 } from "lucide-react";
+import { Header } from "@/components/header";
 
 type View = "transactions" | "stats" | "add" | "edit";
 
@@ -92,20 +91,15 @@ export default function Dashboard() {
     );
   }
 
+  const handleAddTransaction = () => {
+    setView("add");
+    setSelectedTransaction(undefined);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-card">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-primary">Folded</h1>
-            <div className="flex items-center gap-4">
-              <ThemeSwitcher />
-              <ClientAuthButton />
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header onAddTransaction={handleAddTransaction} />
 
       <div className="container mx-auto px-4 py-6 max-w-4xl">
         {/* Navigation */}
@@ -125,14 +119,6 @@ export default function Dashboard() {
           >
             <BarChart3 className="h-4 w-4" />
             Statistics
-          </Button>
-          <Button
-            variant={view === "add" ? "default" : "outline"}
-            onClick={() => setView("add")}
-            className="flex items-center gap-2"
-          >
-            <Plus className="h-4 w-4" />
-            Add Transaction
           </Button>
         </div>
 
