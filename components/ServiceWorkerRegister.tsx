@@ -13,9 +13,16 @@ export default function ServiceWorkerRegister() {
     const isHttps = window.location.protocol === "https:";
 
     if (isHttps || isLocalhost) {
-      navigator.serviceWorker.register("/sw.js").catch((err) => {
-        console.error("Service worker registration failed:", err);
-      });
+      navigator.serviceWorker
+        .register("/sw.js", {
+          scope: "/",
+        })
+        .then((registration) => {
+          console.log("Service Worker registered successfully:", registration);
+        })
+        .catch((err) => {
+          console.error("Service worker registration failed:", err);
+        });
     }
   }, []);
 
