@@ -43,7 +43,7 @@ export function ClientAuthButton() {
   ) : (
     <div className="flex gap-2">
       <Button asChild size="sm" variant={"outline"}>
-        <Link href="/auth/login">Sign in</Link>
+        <Link href="/auth/login">ورود</Link>
       </Button>
       {/* <Button asChild size="sm" variant={"default"}>
         <Link href="/auth/sign-up">Sign up</Link>

@@ -9,15 +9,14 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Folded - Expense Tracker",
-  description:
-    "A personal expense tracking PWA built with Next.js and Supabase",
+  title: "فولدد - مدیریت مخارج",
+  description: "برنامه وب پیشرفته برای مدیریت مخارج شخصی با Next.js و Supabase",
   manifest: "/manifest.json",
   themeColor: "#000000",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Folded",
+    title: "فولدد",
   },
   formatDetection: {
     telephone: false,
@@ -30,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
         <meta
           name="viewport"

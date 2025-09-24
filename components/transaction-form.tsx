@@ -10,6 +10,7 @@ import {
   updateTransaction,
 } from "@/lib/services/transactions";
 import { Transaction, CreateTransactionData } from "@/lib/types/transaction";
+import { translations } from "@/lib/translations";
 
 interface TransactionFormProps {
   transaction?: Transaction;
@@ -44,7 +45,7 @@ export function TransactionForm({
       }
       onSuccess();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : translations.error);
     } finally {
       setIsLoading(false);
     }
@@ -54,13 +55,15 @@ export function TransactionForm({
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
         <CardTitle>
-          {transaction ? "Edit Transaction" : "Add Transaction"}
+          {transaction
+            ? translations.editTransaction
+            : translations.addTransaction}
         </CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="type">Type</Label>
+            <Label htmlFor="type">{translations.type}</Label>
             <select
               id="type"
               value={formData.type}
@@ -73,13 +76,13 @@ export function TransactionForm({
               className="w-full p-2 border border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-800"
               required
             >
-              <option value="expense">Expense</option>
-              <option value="income">Income</option>
+              <option value="expense">{translations.expense}</option>
+              <option value="income">{translations.income}</option>
             </select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="amount">Amount</Label>
+            <Label htmlFor="amount">{translations.amount}</Label>
             <Input
               id="amount"
               type="number"
@@ -93,11 +96,12 @@ export function TransactionForm({
                 })
               }
               required
+              className="text-left"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">{translations.description}</Label>
             <Input
               id="description"
               type="text"
@@ -110,7 +114,7 @@ export function TransactionForm({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="date">Date</Label>
+            <Label htmlFor="date">{translations.date}</Label>
             <Input
               id="date"
               type="date"
@@ -119,6 +123,7 @@ export function TransactionForm({
                 setFormData({ ...formData, date: e.target.value })
               }
               required
+              className="text-left"
             />
           </div>
 
@@ -126,7 +131,11 @@ export function TransactionForm({
 
           <div className="flex gap-2">
             <Button type="submit" disabled={isLoading} className="flex-1">
-              {isLoading ? "Saving..." : transaction ? "Update" : "Add"}
+              {isLoading
+                ? `${translations.loading}`
+                : transaction
+                ? translations.edit
+                : translations.add}
             </Button>
             <Button
               type="button"
@@ -134,7 +143,7 @@ export function TransactionForm({
               onClick={onCancel}
               disabled={isLoading}
             >
-              Cancel
+              {translations.cancel}
             </Button>
           </div>
         </form>
